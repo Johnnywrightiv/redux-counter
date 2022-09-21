@@ -7,7 +7,7 @@ const findSum = function(array) {
 };
 
 const findFrequency = function(array) {
-  // your code here - don't forget to return an object!
+  // your code here - don't forget to return an object
   // OUTPUT: {most: 'a', least: 'd'}
   const frequencies = {
     most: '',
