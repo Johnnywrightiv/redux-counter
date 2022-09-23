@@ -1,4 +1,5 @@
-const testCase = ['a', 'b', 'c', 'a', 'b', 'c', 'a', 'a', 'd'];
+const testCase = 'hello';
+  // change testCase to check individual functions outputs
 
 const findSum = function(array) {
   // your code here - don't forget to return a number!
@@ -28,20 +29,79 @@ const findFrequency = function(array) {
 
 const isPalindrome = function(str) {
   // your code here - don't forget to return a boolean!
+  const FORWARD = str;
+  const BACKWARD = str.split('').reverse().join('');
+  
+  if (FORWARD === BACKWARD) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 const largestPair = function(array) {
   // your code here - don't forget to return a number!
+  // loop through each number
+  // multiply [i] * [i]+1
+  // push product to products array & sort
+  let products = [];
+  
+  for (let i = 0; i < array.length; i++) {
+    const product = (array[i] * array[i+1]);
+    products.push(product)
+  }
+  
+  products.sort(function(a, b) {return b - a});
+  // console.log(products)
+  let largestProduct = products[0];
+
+  return largestProduct;
 };
 
 const removeParenth = function(str) {
   // your code here - don't forget to return a string!
+  let arr = str.split('');
+  let firstHalf = '';
+  let secondHalf = '';
+  for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+    
+    if (element === '(') {
+      firstHalf = arr.slice(0, i);
+    }
+    if (element === ')') {
+      secondHalf = arr.slice(i);
+      secondHalf.shift();
+    }
+  }
+
+  return (firstHalf.join("") + secondHalf.join(""));
 };
 
 const scoreScrabble = function(str) {
   // your code here - don't forget to return a number!
+  const pointScale = { // <-- possibly turn letters into KEYS and point values into VALUES?
+    1: [a, e, i, o, u, l, n, r, s, t],
+    2: [d, g],
+    3: [b, c, m, p],
+    4: [f, h, v, w, y],
+    5: [k],
+    8: [j, x],
+    10: [q, z],
+  }
 };
 
+
+
+
+
+
+
+
 console.log('hi')
-// console.log(findSum(testCase))
-console.log(findFrequency(testCase))
+// console.log(findSum(testCase));
+// console.log(findFrequency(testCase));
+// console.log(isPalindrome(testCase));
+// console.log(largestPair(testCase));
+// console.log(removeParenth(testCase));
+console.log(scoreScrabble(testCase));
