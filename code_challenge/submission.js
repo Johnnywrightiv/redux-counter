@@ -1,4 +1,4 @@
-const testCase = 'hello';
+const testCase = 'quiet';
   // change testCase to check individual functions outputs
 
 const findSum = function(array) {
@@ -80,25 +80,41 @@ const removeParenth = function(str) {
 
 const scoreScrabble = function(str) {
   // your code here - don't forget to return a number!
-  const pointScale = { // <-- possibly turn letters into KEYS and point values into VALUES?
-    1: [a, e, i, o, u, l, n, r, s, t],
-    2: [d, g],
-    3: [b, c, m, p],
-    4: [f, h, v, w, y],
-    5: [k],
-    8: [j, x],
-    10: [q, z],
-  }
+  const charValues = [];
+  const pointScale = {
+    1: ['a', 'e', 'i', 'o', 'u', 'l', 'n', 'r', 's', 't'],
+    2: ['d', 'g'],
+    3: ['b', 'c', 'm', 'p'],
+    4: ['f', 'h', 'v', 'w', 'y'],
+    5: ['k'],
+    8: ['j', 'x'],
+    10: ['q', 'z'],
+  };
+  
+  for (let i = 0; i < str.length; i++) {
+    const element = str[i];
+    
+    if (pointScale[1].includes(str[i])) { // can probably be more concise, but this ugly mess of nested if/elses works for now :)
+      charValues.push(parseInt(Object.keys(pointScale)[0]));
+    } else if (pointScale[2].includes(str[i])) {
+      charValues.push(parseInt(Object.keys(pointScale)[1]));
+    } else if (pointScale[3].includes(str[i])) {
+      charValues.push(parseInt(Object.keys(pointScale)[2]));
+    } else if (pointScale[4].includes(str[i])) {
+        charValues.push(parseInt(Object.keys(pointScale)[3]));
+    } else if (pointScale[5].includes(str[i])) {
+      charValues.push(parseInt(Object.keys(pointScale)[4]));
+    } else if (pointScale[8].includes(str[i])) {
+      charValues.push(parseInt(Object.keys(pointScale)[5]));
+    } else if (pointScale[10].includes(str[i])) {
+      charValues.push(parseInt(Object.keys(pointScale)[6]));
+    }
+  };
+  
+  const valueOfStr = charValues.reduce((a, b) => a + b);
+  return valueOfStr;
 };
 
-
-
-
-
-
-
-
-console.log('hi')
 // console.log(findSum(testCase));
 // console.log(findFrequency(testCase));
 // console.log(isPalindrome(testCase));
