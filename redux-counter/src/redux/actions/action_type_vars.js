@@ -1,0 +1,7 @@
+export const Actions = {
+  INCREMENT: "INCREMENT",
+  DECREMENT: "DECREMENT",
+  RESET: "RESET",
+  LOG_IN: "LOG_IN",
+  LOG_OUT: "LOG_OUT"
+}
